@@ -43,7 +43,7 @@ from pathlib import Path
 from typing import Iterable, Mapping, Sequence
 
 
-REPO_ROOT = Path(__file__).resolve().parent
+REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_LOG_ROOT = REPO_ROOT / "results" / "data" / "_log" / "learning" / "D_SARSA"
 DEFAULT_WARMUP = 3500.0
 DEFAULT_MISSION_END = 10000.0

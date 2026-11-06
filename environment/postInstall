@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Dependencies are installed by environment/Dockerfile.
+python -m pip check

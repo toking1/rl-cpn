@@ -10,8 +10,8 @@ from typing import Any
 
 
 def repo_root() -> Path:
-    """Return the repository root containing the simulation modules."""
-    return Path(__file__).absolute().parent
+    """Return the repository root, the parent of code/."""
+    return Path(__file__).absolute().parent.parent
 
 
 def _absolute_path(value: str | Path) -> Path:

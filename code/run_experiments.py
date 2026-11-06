@@ -30,7 +30,7 @@ from statistics_export import export_statistics
 
 
 CODE_DIR = Path(__file__).resolve().parent
-REPO_ROOT = CODE_DIR
+REPO_ROOT = CODE_DIR.parent
 RESULTS_ROOT = resolve_results_root()
 ALPHAS = tuple(round(index * 0.05, 2) for index in range(21))
 SINGLE_SCENARIOS = ("throughput_shock", "energy_scarcity", "faulted_recovery")

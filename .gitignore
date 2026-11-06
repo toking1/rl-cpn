@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 runtime.local.toml
 statistics-out/
+raw-out/
 results/
 _log/
 *.db

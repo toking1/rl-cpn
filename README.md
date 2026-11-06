@@ -1,83 +1,49 @@
 # rl-cpn
 
-Reinforcement-learning edge-to-cloud scheduling simulator with dynamic reward
-weights, four scenario contracts, Gamma-7 evaluation, and statistics export.
+## Introduction
 
-This research extension derives from [Pancio-code/Simulator](https://github.com/Pancio-code/Simulator).
-The release reorganizes the [CNB development source](https://cnb.cool/CPN.toking/rl-cpn)
-to follow the upstream root-level module layout and filename conventions.
-Original copyright headers are retained. Distributed under [GPLv3](LICENSE).
+rl-cpn extends [Pancio-code/Simulator](https://github.com/Pancio-code/Simulator)
+with dynamic reward weights, four edge-to-cloud simulation scenarios, Gamma-7
+evaluation, experiment orchestration and statistics export.
 
-## Layout
+This repository follows the original author's project structure:
 
 ```text
-rl-cpn/
-  run_*.py                 Simulation and experiment entry points
-  node.py, cloud.py, job.py Core simulation models
-  service_*.py             Simulation services
-  simulation_log.py        Logging (upstream log.py, renamed in CNB)
-  dynamic_alpha.py         Reactive reward-weight controllers
-  scenarios.py             Four scenario contracts
-  evaluate_gamma7.py       Metrics and scoring
-  statistics_export.py     CSV/JSON statistics export
-  runtime_config.py        External raw-data paths
-  traffic/                 Fixed simulation inputs
-  requirements.txt         Python 3.13 dependency adaptation
-  metadata/                Immutable source provenance
-  docs/                    Release changes and limitations
+code/                  Simulation modules, entry points and traffic inputs
+environment/           Dependencies, Dockerfile and post-install script
+metadata/metadata.yml  Project description, authors and source provenance
+README.md              Introduction and module conventions
+REPRODUCING.md         Setup and execution instructions
 ```
 
-## Quick start
+The source comes from [CNB rl-cpn](https://cnb.cool/CPN.toking/rl-cpn).
+The exact revision is recorded in `metadata/metadata.yml`.
 
-Use Python 3.11 or 3.13. Local smoke checks used Python 3.11.2; the dependency
-list includes the CNB Python 3.13 adaptation. Run commands from the repository root.
+## Citations
 
-```bash
-python -m venv .venv
-# Linux/macOS:
-source .venv/bin/activate
-# Windows PowerShell instead:
-# .\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-python run_experiments.py list
-python run_experiments.py --dry-run
-```
+Andrea Panceri, Gabriele Proietti Mattia and Roberto Beraldi (2024).
+*Real-time and Energy-aware Scheduling for Edge-to-Cloud Continuum based on
+Reinforcement Learning.* See the [original repository](https://github.com/Pancio-code/Simulator).
 
-Configure an external raw-data directory before executing simulations:
+Please cite the original work and redistribute under the same
+[GPLv3 license](code/LICENSE). Original copyright headers are retained.
+Research extensions are by TANG QINGBO.
 
-```bash
-# Linux/macOS
-export RL_CPN_RAW_ROOT="$HOME/rl-cpn-data/raw"
-# Windows PowerShell instead:
-# $env:RL_CPN_RAW_ROOT = 'C:\rl-cpn-data\raw'
-python run_experiments.py --workers 1
-```
+## Instructions
 
-Alternatively copy `runtime.local.example.toml` to `runtime.local.toml` and
-set `paths.raw_root`. Environment variables take precedence. Raw databases stay
-outside Git; standard statistics are generated under `statistics-out/`.
-Use `python run_experiments.py --help` for filters and execution options.
+Module names below are relative to `code/`, following the author's conventions:
 
-## Scope
+- `run_*.py`: run simulations and experiments.
+- `node.py`, `cloud.py`, `job.py`, `models.py`: simulation models.
+- `simulation_log.py`: logging utilities (renamed from upstream `log.py` in CNB).
+- `service_*.py`: simulation services.
+- `traffic/`: fixed simulation inputs.
+- `dynamic_alpha.py`: reactive reward-weight controllers.
+- `scenarios.py`: `throughput_shock`, `energy_scarcity`, `faulted_recovery`, `cascading`.
+- `evaluate_gamma7.py`: seven metrics and scenario scoring.
+- `statistics_export.py`: CSV/JSON statistics export.
+- `run_experiments.py`: unified experiment entry point.
 
-Supported scenarios: `throughput_shock`, `energy_scarcity`, `faulted_recovery`,
-and `cascading`. The default experiment selection contains 87 tasks (63 single
-scenario fixed-alpha, 21 cascading fixed-alpha, 3 cascading reactive).
-Listing and dry-run commands do not execute the simulation matrix.
-
-Historical analyses and plotting scripts remain on CNB's `data/experiments`
-branch. This source release does not bundle raw databases, historical figures,
-or a prebuilt Docker image. See [release notes](docs/RELEASE_NOTES.md).
-
-## Attribution
-
-Please cite the upstream authors Andrea Panceri, Gabriele Proietti Mattia and
-Roberto Beraldi, and the upstream work described in their
-[README](https://github.com/Pancio-code/Simulator#citations):
-“Real-time, adaptive and online scheduling for Edge-to-Cloud Continuum based on
-Reinforcement Learning” (2024), and “Leveraging Reinforcement Learning for online
-scheduling of real-time tasks in the Edge/Fog-to-Cloud computing continuum”
-(2021), DOI: [10.1109/NCA53618.2021.9685413](https://doi.org/10.1109/NCA53618.2021.9685413).
-
-Research extensions: TANG QINGBO. Source revision and original module hashes
-are recorded in [release-manifest.json](metadata/release-manifest.json).
+Setup and commands are in [REPRODUCING.md](REPRODUCING.md).
+Historical statistics, analysis scripts and `plot_*.py` scripts remain on the
+CNB `data/experiments` branch. Raw simulation databases are stored outside Git.
