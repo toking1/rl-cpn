@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "source_repository": "https://cnb.cool/CPN.toking/rl-cpn",
+  "source_commit": "5853691550c6d03f1abd44bc46dd1210497d38d0",
+  "upstream_repository": "https://github.com/Pancio-code/Simulator",
+  "layout": "Root-level simulation modules and traffic inputs, following upstream",
+  "changes": [
+    "Flatten code/ into repository root",
+    "Adjust only repository-root path resolution in three modules",
+    "Expose Python 3.13 dependency adaptation as requirements.txt",
+    "Exclude development workspace settings, internal notes and unverified container packaging"
+  ],
+  "source_files": {
+    "cloud.py": "660e8f9f9b3cad7bcc5a9ac0e1e177dce3da5ea24059abd2596373eccdaf1fa0",
+    "dynamic_alpha.py": "3e31d0eff58d2ea8e7415df28f8eaa82d6fb0d6dc0bbfab2dc228fa83e68c600",
+    "evaluate_gamma7.py": "d26a50443a84de447cc52cbbfe90b90da4f238ebd04a7e4c9bc7eb0aea8b0550",
+    "experiment_registry.py": "89b2b55481c9c627fffe84287baacc3157325e5c9b3037a5ff0e00d52739cce3",
+    "function_approximation.py": "6813c58c9243fc5340454c8f5ad2f2117be06a000aa55940f39b6f346e5aadc0",
+    "job.py": "ec2b25ce58ffe38bb0e4d76fc7aefacc87fccd7b9fe01fca7ad3d37409898e65",
+    "models.py": "af2116319204740249433584e028e56529dc21039d9576fab1bd2e27dd6541ef",
+    "node.py": "6d79440cda9466f1643500ed1545ddeddcbd9193c1f9a9daf696145d01d57b23",
+    "runtime_config.py": "9b89fea2b35bfa083f35a7b090b33952f05aeff0b13bfc057f2a968bd7070c70",
+    "run_alpha_multiseed.py": "1c6c0d142404460d7c16de718370ef4a1d2e38a55a185b7b8134de2adb18bcf8",
+    "run_cascading_reactive_reruns.py": "bb07ab7c4af5aa9b5afa2b380ffcbc59a174af6edb42c557bde311bdf01f13f5",
+    "run_corrected_reruns.py": "c8658ed1dfdc34c3b42b4d2cc2112b7ce2abe12fb49047dc3ac5a4c310ea0524",
+    "run_dynamic_alpha.py": "3c07a3c89a6b2347dc4214c48d6a780a0eb9e336379d341e0ebbbf463f5a8881",
+    "run_experiments.py": "290f306378a07228679718da007a63974670395e79c489c3d488c70612072457",
+    "run_objective_repair.py": "93adf94ac25d9eedf824dfd8257a9fc9cd96bd36e230f76685d613958a7a7fd0",
+    "run_repair_and_single_dynamic.py": "ecd8ad03cc814e78a90145983a4f830c2d67bc1f54389844060cbd02695a3182",
+    "run_simulation_d_sarsa_cloud.py": "df35288d10f686a9f34b9e45874739d6d83694a4e4328fd8951c8f0097126113",
+    "scenarios.py": "bad99300702c31973af53db1eb9aa508d66e471e829024aa651d98aaed29e5dd",
+    "service_data_storage.py": "00085b1f1b99a204e216aa21dfbab81ca2532ded7291bad57ac6b3797a0e228c",
+    "service_discovery.py": "7d5a3e631b40030021d356baa18b9cc7d230eb8654ab1c1a01e99e687b36509e",
+    "simulation_log.py": "46634c71e2869faf26bff6b3f521b21de91b84322aca264b08bd369edbe05488",
+    "solar_power_model.py": "6bb4f1911c979d781aa97d2afdaa1b4a8b39d2aef628873aa0209d732c74fbfd",
+    "solar_power_panel_model.py": "955214b095f1109ff7f9a6e04ec529a6daa32b99b10d524b4555985d3f007c86",
+    "solar_power_trace_model.py": "5dcdf1c451026745e8cd8229e1fb926bd27e766f1a256030707d4dd2caaadf74",
+    "statistics_export.py": "9dd71283bf18e93b12189093fc029f32c4cd557f68ca092726b4373beeed40e6",
+    "tilings.py": "4cc1354e2001713fd9e3a1b086ae8368c5c6563cdcf47a97519aafa158095130",
+    "traffic_model.py": "358a4399d0d3397c92f73aa1291327f08f16b6bb58893c9328d07b8470181d0f",
+    "utils.py": "5d699475091b9ddbf78a8e1e08732674cda67defb34b6a410577a96867168563"
+  }
+}

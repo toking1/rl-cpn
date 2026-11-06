@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.py[cod]
+runtime.local.toml
+statistics-out/
+results/
+_log/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+.idea/
+.vscode/
+.DS_Store

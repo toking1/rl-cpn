@@ -1,0 +1,5 @@
+# Local runtime configuration example. Copy to runtime.local.toml (not tracked).
+# Priority: --raw-root argument > RL_CPN_RAW_ROOT env > this file > platform default
+# (CNB/Linux: /data/rl-cpn/raw, Windows: C:\rl-cpn-data\raw).
+[paths]
+# raw_root = "D:\\rl-cpn-data\\raw"
