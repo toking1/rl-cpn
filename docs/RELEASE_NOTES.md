@@ -20,3 +20,12 @@ recovery; this release does not change that metric definition. Historical
 plotting workflows require the separate CNB data branch and its statistics.
 
 No full 87-task simulation rerun or Docker build is claimed by this release.
+
+## Validation
+
+Local Windows / Python 3.11.2: dependency installation and `pip check`, syntax
+checks for all 32 Python modules, simulator entry-point imports, repository-root
+resolution, experiment registry listing, and preview of all 87 tasks passed.
+Python 3.13 and Linux execution were not tested during this release.
+`checks.example.yml` is an optional GitHub Actions configuration example; it
+is not an enabled workflow.

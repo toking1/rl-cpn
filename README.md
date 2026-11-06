@@ -29,7 +29,8 @@ rl-cpn/
 
 ## Quick start
 
-Use Python 3.13. Run commands from the repository root.
+Use Python 3.11 or 3.13. Local smoke checks used Python 3.11.2; the dependency
+list includes the CNB Python 3.13 adaptation. Run commands from the repository root.
 
 ```bash
 python -m venv .venv
