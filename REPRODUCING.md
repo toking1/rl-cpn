@@ -35,15 +35,37 @@ entry point. The default matrix contains 87 tasks: 63 single-scenario fixed-alph
 runs, 21 cascading fixed-alpha runs and 3 cascading reactive runs. Registry entries
 marked `runnable=False` are not executed by this matrix.
 
-Raw data defaults to `/data/rl-cpn/raw` on Linux and `C:\rl-cpn-data\raw` on
-Windows. Override with `RL_CPN_RAW_ROOT`, or copy
-`environment/runtime.local.example.toml` to the repository root as
-`runtime.local.toml` and set `paths.raw_root`. Environment variables take precedence.
-Choose a writable directory outside the repository. Statistics are exported to
-`statistics-out/` at the repository root.
+## Output directories
 
-Use `python run_experiments.py --help` for filters and options. For individual
-databases use `python evaluate_gamma7.py /absolute/path/to/log.db`.
+The following paths are relative to the repository root, including when you run
+the experiment entry point from `code/`.
+
+| Output | Default location | Override order (highest first) |
+| --- | --- | --- |
+| Raw simulation logs and databases | `raw-out/_log/learning/D_SARSA/WORKERS_OR_CLOUD/<session>/` | `--raw-root`, `RL_CPN_RAW_ROOT`, `paths.raw_root` in `runtime.local.toml` |
+| Exported statistics | `statistics-out/<experiment>/<batch>/<scenario>/` | `--statistics-dir`, `RL_CPN_STATISTICS_ROOT` |
+
+Both default output directories are ignored by Git. For local settings, copy
+`environment/runtime.local.example.toml` to `runtime.local.toml` at the repository
+root and edit `paths.raw_root`. `RL_CPN_CONFIG` can select another config file.
+Relative override values use the same repository root. Existing absolute overrides
+still work for archived data.
+
+From `code/`, preview a run with custom output directories:
+
+```bash
+python run_experiments.py --dry-run --raw-root raw-out/custom --statistics-dir statistics-out/custom
+```
+
+The Gamma-7 sweep evaluator uses the configured raw directory by default.
+Use `--log-root` to read an older archive, or pass a database path directly.
+For standalone tools, explicit `--log-root`, `--output`, `--reference-output`,
+`--results-root` and `--output-root` paths are relative to the current working
+directory. From `code/`, for example:
+
+```bash
+python evaluate_gamma7.py "../raw-out/_log/learning/D_SARSA/WORKERS_OR_CLOUD/<session>/log.db" --output ../statistics-out/evaluation.json
+```
 
 ## Docker environment
 
@@ -51,15 +73,12 @@ The Dockerfile follows the upstream environment-only layout. From the repository
 
 ```bash
 docker build -t rl-cpn-env environment
-docker run --rm --workdir /code \
-  --volume "$PWD/code":/code \
-  --volume "$PWD/raw-out":/data/rl-cpn/raw \
-  --volume "$PWD/statistics-out":/statistics-out \
-  --env RL_CPN_STATISTICS_ROOT=/statistics-out \
+docker run --rm --volume "$PWD":/workspace \
   rl-cpn-env bash run --dry-run
 ```
 
-Replace `--dry-run` with `--workers 1` to execute simulations. The Docker image
+Both output directories are written inside the mounted repository. Replace
+`--dry-run` with `--workers 1` to execute simulations. The Docker image
 has not been built or tested in this session.
 
 ## Scope and known limits

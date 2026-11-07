@@ -11,9 +11,10 @@ import sys
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
+from runtime_config import results_root
 
 CODE_DIR = Path(__file__).resolve().parent
-RESULTS_DIR = CODE_DIR.parent / "results" / "data" / "_log" / "learning" / "D_SARSA" / "WORKERS_OR_CLOUD"
+RESULTS_DIR = results_root()
 SEED = 20260715
 ALPHAS = tuple(round(index * 0.05, 2) for index in range(21))
 SINGLE_SCENARIOS = ("energy_scarcity", "faulted_recovery")

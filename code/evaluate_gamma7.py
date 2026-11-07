@@ -42,9 +42,8 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Iterable, Mapping, Sequence
 
+from runtime_config import results_root
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_LOG_ROOT = REPO_ROOT / "results" / "data" / "_log" / "learning" / "D_SARSA"
 DEFAULT_WARMUP = 3500.0
 DEFAULT_MISSION_END = 10000.0
 DEFAULT_PERIODIC_RATES = (60.0, 30.0, 15.0)
@@ -738,7 +737,7 @@ def main() -> None:
     )
     parser.add_argument("--session-id", help="Sweep session prefix, e.g. 20260804_cascading_fixed_alpha.")
     parser.add_argument("--action-space", choices=("ONLY_WORKERS", "WORKERS_OR_CLOUD"))
-    parser.add_argument("--log-root", type=Path, default=DEFAULT_LOG_ROOT)
+    parser.add_argument("--log-root", type=Path, help="Sweep log root (defaults to the configured raw data directory's D_SARSA subtree).")
     parser.add_argument("--warmup", type=float, default=DEFAULT_WARMUP)
     parser.add_argument("--scenario", default=None)
     parser.add_argument("--mission-end", type=float, default=None)
@@ -778,7 +777,7 @@ def main() -> None:
                 mission_end=args.mission_end,
                 periodic_rates=periodic_rates,
             )
-            for alpha, database in find_databases(args.log_root, args.action_space, args.session_id)
+            for alpha, database in find_databases(args.log_root or results_root().parent, args.action_space, args.session_id)
         ),
         key=lambda item: item.alpha,
     )

@@ -5,7 +5,6 @@ import json
 import os
 from pathlib import Path
 import re
-import sys
 from typing import Any
 
 
@@ -14,8 +13,9 @@ def repo_root() -> Path:
     return Path(__file__).absolute().parent.parent
 
 
-def _absolute_path(value: str | Path) -> Path:
-    return Path(value).expanduser().absolute()
+def resolve_repo_path(value: str | Path) -> Path:
+    """Resolve a repository-relative setting or an explicit absolute override."""
+    return repo_root() / Path(value).expanduser()
 
 
 def _load_minimal_config(text: str) -> dict[str, Any]:
@@ -73,7 +73,7 @@ def load_local_config(
     if config_path is None:
         config_path = repo_root() / "runtime.local.toml"
 
-    path = _absolute_path(config_path)
+    path = resolve_repo_path(config_path)
     try:
         with path.open("rb") as stream:
             content = stream.read()
@@ -92,13 +92,13 @@ def resolve_raw_root(
     explicit: str | Path | None = None,
     config_path: str | Path | None = None,
 ) -> Path:
-    """Resolve explicit, environment, local config, then platform default."""
+    """Resolve explicit, environment, local config, then repository default."""
     if explicit is not None:
-        return _absolute_path(explicit)
+        return resolve_repo_path(explicit)
 
     environment_root = os.environ.get("RL_CPN_RAW_ROOT")
     if environment_root is not None:
-        return _absolute_path(environment_root)
+        return resolve_repo_path(environment_root)
 
     config = load_local_config(config_path)
     paths = config.get("paths", {})
@@ -109,11 +109,9 @@ def resolve_raw_root(
     if configured_root is not None:
         if not isinstance(configured_root, str):
             raise ValueError("Configuration entry 'paths.raw_root' must be a string")
-        return _absolute_path(configured_root)
+        return resolve_repo_path(configured_root)
 
-    if sys.platform.startswith("win") or os.name == "nt":
-        return _absolute_path(r"C:\rl-cpn-data\raw")
-    return _absolute_path("/data/rl-cpn/raw")
+    return resolve_repo_path("raw-out")
 
 
 def results_root(

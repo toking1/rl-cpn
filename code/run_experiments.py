@@ -24,7 +24,7 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
 import experiment_registry
-from runtime_config import resolve_raw_root
+from runtime_config import resolve_raw_root, resolve_repo_path
 from runtime_config import results_root as resolve_results_root
 from statistics_export import export_statistics
 
@@ -313,16 +313,13 @@ def _add_arguments(
         "--raw-root",
         type=Path,
         default=default(None),
-        help="Override the raw simulation data root.",
+        help="Override the raw simulation data root (relative to the repository root).",
     )
     parser.add_argument(
         "--statistics-dir",
         type=Path,
-        default=default(
-            Path(os.environ.get(
-                "RL_CPN_STATISTICS_ROOT", REPO_ROOT / "statistics-out"
-            ))
-        ),
+        default=default(Path(os.environ.get("RL_CPN_STATISTICS_ROOT", "statistics-out"))),
+        help="Statistics output directory (relative to the repository root).",
     )
     parser.add_argument(
         "--dry-run", action="store_true", default=default(False)
@@ -391,7 +388,7 @@ def main() -> int:
     # after run_one changes its working directory.
     os.environ["RL_CPN_RAW_ROOT"] = str(resolve_raw_root(args.raw_root))
     os.environ["SIMULATION_RANDOM_SEED"] = str(args.seed)
-    args.statistics_dir = args.statistics_dir.expanduser().absolute()
+    args.statistics_dir = resolve_repo_path(args.statistics_dir)
 
     single_tasks = [
         ("single", scenario, alpha)
