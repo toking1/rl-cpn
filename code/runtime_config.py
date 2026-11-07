@@ -93,25 +93,24 @@ def resolve_raw_root(
     config_path: str | Path | None = None,
 ) -> Path:
     """Resolve explicit, environment, local config, then repository default."""
-    if explicit is not None:
-        return resolve_repo_path(explicit)
-
-    environment_root = os.environ.get("RL_CPN_RAW_ROOT")
-    if environment_root is not None:
-        return resolve_repo_path(environment_root)
-
-    config = load_local_config(config_path)
-    paths = config.get("paths", {})
-    if not isinstance(paths, dict):
-        raise ValueError("Configuration entry 'paths' must be a table")
-
-    configured_root = paths.get("raw_root")
-    if configured_root is not None:
-        if not isinstance(configured_root, str):
+    value = explicit
+    if value is None:
+        value = os.environ.get("RL_CPN_RAW_ROOT")
+    if value is None:
+        paths = load_local_config(config_path).get("paths", {})
+        if not isinstance(paths, dict):
+            raise ValueError("Configuration entry 'paths' must be a table")
+        value = paths.get("raw_root")
+        if value is not None and not isinstance(value, str):
             raise ValueError("Configuration entry 'paths.raw_root' must be a string")
-        return resolve_repo_path(configured_root)
+    if value is None:
+        value = "results"
 
-    return resolve_repo_path("raw-out")
+    path = resolve_repo_path(value).resolve()
+    root = (repo_root() / "results").resolve()
+    if not path.is_relative_to(root):
+        raise ValueError("Raw output must be within the repository results directory")
+    return path
 
 
 def results_root(

@@ -1,5 +1,5 @@
 # Local runtime configuration example. Copy to runtime.local.toml (not tracked).
 # Relative paths are based on the repository root on all platforms.
-# Priority: --raw-root > RL_CPN_RAW_ROOT > this file > raw-out/.
+# Priority: --raw-root > RL_CPN_RAW_ROOT > this file > results/.
 [paths]
-raw_root = "raw-out"
+raw_root = "results"

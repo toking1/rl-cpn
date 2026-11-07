@@ -11,7 +11,7 @@ from enum import Enum
 
 try:
     from scenarios import CASCADING_MAX_TIME
-except ImportError:  # Compatibility with the current CNB V6 scenario module.
+except ImportError:  # Compatibility with earlier scenario modules.
     from scenarios import CASCADING_SIMULATION_MAX_TIME as CASCADING_MAX_TIME
 
 

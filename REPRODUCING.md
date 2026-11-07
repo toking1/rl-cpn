@@ -1,93 +1,42 @@
-# Reproducing rl-cpn
+# 复现说明
 
-## Local environment
+## 环境准备
 
-Run setup from the repository root. Python 3.11 was used for local smoke checks;
-`requirements-py313.txt` also contains the development project's Python 3.13
-dependency adaptation.
+在仓库根目录的 Linux 环境中执行：
 
 ```bash
 python -m venv .venv
-# Linux/macOS
 source .venv/bin/activate
-# Windows PowerShell instead:
-# .\.venv\Scripts\Activate.ps1
 python -m pip install -r environment/requirements-py313.txt
 python -m pip check
 ```
 
-`environment/requirements.txt` preserves the development project's original
-dependency definitions. Use the adapted list above for the current setup.
+仓库根目录的 `results/` 与 `code/` 平级，用于保存运行结果，已加入 Git 忽略规则。直接运行公共仿真器时，数据库、模型、日志及绘图目录默认位于 `results/`。各实验入口要求输出目录位于 `results/` 下。
 
-## Simulation entry point
+## 四类实验的源码关系与现有入口
 
-The working directory is `code/`, as in the original simulator.
+`code/` 是公共仿真器，包含四种场景、固定权重、三种动态权重策略和 Gamma-7 计算。各实验通过自己的入口调度公共源码。
 
-```bash
-cd code
-python run_experiments.py list
-python run_experiments.py --dry-run
-python run_experiments.py --workers 1
-```
+本机实验资料中的四类历史源码快照与当前公共源码的主要差异是日志模块名称由 `log.py` 改为 `simulation_log.py`，以及原始结果目录和评分工具默认路径改用运行时配置。场景定义和仿真入口的实验逻辑在所比对的快照中一致。各类实验仍需要各自的控制器、运行工具、配置和评分参考，不能仅凭公共入口代替。
 
-On Linux/macOS, `bash run --dry-run` and `bash run --workers 1` invoke the same
-entry point. The default matrix contains 87 tasks: 63 single-scenario fixed-alpha
-runs, 21 cascading fixed-alpha runs and 3 cascading reactive runs. Registry entries
-marked `runnable=False` are not executed by this matrix.
-
-## Output directories
-
-The following paths are relative to the repository root, including when you run
-the experiment entry point from `code/`.
-
-| Output | Default location | Override order (highest first) |
+| 实验 | 现有资料中的设置 | 公共源码以外的主要依赖 |
 | --- | --- | --- |
-| Raw simulation logs and databases | `raw-out/_log/learning/D_SARSA/WORKERS_OR_CLOUD/<session>/` | `--raw-root`, `RL_CPN_RAW_ROOT`, `paths.raw_root` in `runtime.local.toml` |
-| Exported statistics | `statistics-out/<experiment>/<batch>/<scenario>/` | `--statistics-dir`, `RL_CPN_STATISTICS_ROOT` |
+| 重复实验 | 四场景，21 个固定权重及拒绝率反馈、电池反馈、混合反馈三种策略，按种子重复 | 四场景任务编排、数据校验与聚合、评分和绘图工具 |
+| 对照实验 | 四场景，混合反馈、UCB、DQN、PPO，以及 LyDROO、DEBO、Greedy、All-Edge、All-Local | 基线算法适配、控制器、方法参数和冻结评分参考 |
+| 消融实验 | 四场景，改变负载与健康反馈、检查周期、限幅及控制形式；另有补充变体 | 消融控制器、采集与校验工具和冻结评分参考 |
+| 扩展实验 | 级联和吞吐冲击场景，比较无线条件下的完整策略、比例反馈和预选固定权重 | 无线通道及控制器、采集工具和冻结评分参考 |
 
-Both default output directories are ignored by Git. For local settings, copy
-`environment/runtime.local.example.toml` to `runtime.local.toml` at the repository
-root and edit `paths.raw_root`. `RL_CPN_CONFIG` can select another config file.
-Relative override values use the same repository root. Existing absolute overrides
-still work for archived data.
+实验专用控制器与运行工具分别位于 `实验/对照实验/`、`实验/扩展实验/`、`实验/消融实验/` 和 `实验/重复实验/`。四者都从公共 `code/` 加载仿真器。对照、消融和扩展实验使用各自目录内的冻结评分参考；重复实验根据本次固定权重结果建立每场景参考边界。消融实验同时包括基础消融和补充消融变体。
 
-From `code/`, preview a run with custom output directories:
+在 Linux 下，从仓库根目录运行对应入口。随机种子决定重复组，每个种子在同一场景下供各策略配对使用；并行数和输出目录由用户提供。以下为参数形式，按需要替换：
 
 ```bash
-python run_experiments.py --dry-run --raw-root raw-out/custom --statistics-dir statistics-out/custom
+python 实验/重复实验/一键复现.py --seeds 20260715 20260716 --workers 4 --output results/重复实验
+python 实验/对照实验/一键复现.py --seeds 20261110 20261111 --workers 4 --output results/对照实验
+python 实验/消融实验/一键复现.py --seeds 20261020 20261021 --workers 4 --output results/消融实验
+python 实验/扩展实验/一键复现.py --seeds 20261020 20261021 --workers 4 --output results/扩展实验
 ```
 
-The Gamma-7 sweep evaluator uses the configured raw directory by default.
-Use `--log-root` to read an older archive, or pass a database path directly.
-For standalone tools, explicit `--log-root`, `--output`, `--reference-output`,
-`--results-root` and `--output-root` paths are relative to the current working
-directory. From `code/`, for example:
+加入 `--dry-run` 可预览全部任务，预览不创建输出。每次实验使用 `results/` 下的独立相对输出目录。输出包括 `raw/` 中的仿真数据库、`archives/` 中的归档、`analysis/runs/` 中的逐次指标与校验、汇总表及 `logs/` 中的运行日志。同一输出目录只能用于相同的实验设置，已完成任务可重新调用以续跑。失败任务不会计为完成。
 
-```bash
-python evaluate_gamma7.py "../raw-out/_log/learning/D_SARSA/WORKERS_OR_CLOUD/<session>/log.db" --output ../statistics-out/evaluation.json
-```
-
-## Docker environment
-
-The Dockerfile follows the upstream environment-only layout. From the repository root:
-
-```bash
-docker build -t rl-cpn-env environment
-docker run --rm --volume "$PWD":/workspace \
-  rl-cpn-env bash run --dry-run
-```
-
-Both output directories are written inside the mounted repository. Replace
-`--dry-run` with `--workers 1` to execute simulations. The Docker image
-has not been built or tested in this session.
-
-## Scope and known limits
-
-Local checks cover dependencies, module syntax, simulation imports, path resolution,
-experiment listing and task preview. A complete simulation rerun is not claimed.
-Historical figures require statistics and analysis scripts from CNB's separate
-`data/experiments` branch; they are not bundled here.
-
-The source retains the existing evaluation definitions. Historical data may
-predate battery-recovery and alpha-logging fixes. Service-time evaluation can
-overcount when a worker dies more than once after recovery.
+对照实验中的 LyDROO 和 DEBO 为实验资料中的模型化适配实现；具体算法定义见该目录下的基线代码。运行工具依赖 Linux 的 `resource` 模块。上述脚本已通过任务矩阵预览及各类实验一个短时仿真任务的检查，完整实验矩阵仍需实际运行验证。

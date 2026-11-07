@@ -6,10 +6,8 @@ description: >-
   edge-cloud task scheduling and energy management. It adds dynamic-alpha
   research, scenario contracts, experiment organization, Gamma-7 evaluation,
   runtime configuration, and standard statistics export. Reproducibility is
-  organized across two branches: The main branch is the sole source of truth for
-  simulation code, while data/experiments stores statistics, analysis scripts,
-  figures, and registry records. Raw simulation data are kept outside the
-  repository, and plotting reads only standard statistics tables.
+  supported by the simulation code and standard statistics export. Raw simulation
+  data are kept outside the repository.
 tags:
   - reinforcement learning
   - edge-cloud
@@ -27,6 +25,4 @@ corresponding_contributor:
   affiliations:
     - name: "Hubei University of Technology"
 
-source_repository: https://cnb.cool/CPN.toking/rl-cpn
-source_commit: 5853691550c6d03f1abd44bc46dd1210497d38d0
 upstream_repository: https://github.com/Pancio-code/Simulator

@@ -21,6 +21,7 @@ import simpy
 from function_approximation import DSPSarsaTiling
 from job import Job
 from simulation_log import Log
+from runtime_config import resolve_raw_root
 from traffic_model import TrafficModel
 from solar_power_panel_model import SolarPowerPanelModel
 from solar_power_trace_model import SolarPowerTraceModel
@@ -46,11 +47,11 @@ class DiscoveryType:
 class Node:
     MODULE = "Node"
 
-    BASE_DIR_LOG = "_log"
-    BASE_DIR_PLOT = "_plot"
-    BASE_DIR_DNN = "_dnn"
-    BASE_DIR_MODELS = "_models"
-    BASE_DIR_TB = "_scalars"
+    BASE_DIR_LOG = str(resolve_raw_root() / "_node_logs")
+    BASE_DIR_PLOT = str(resolve_raw_root() / "_plot")
+    BASE_DIR_DNN = str(resolve_raw_root() / "_dnn")
+    BASE_DIR_MODELS = str(resolve_raw_root() / "_models")
+    BASE_DIR_TB = str(resolve_raw_root() / "_scalars")
 
     LOG_KEY_EPISODE = "episode"
     LOG_KEY_EPS = "eps"

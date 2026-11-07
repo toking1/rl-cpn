@@ -16,9 +16,6 @@ README.md              Introduction and module conventions
 REPRODUCING.md         Setup and execution instructions
 ```
 
-The source comes from [CNB rl-cpn](https://cnb.cool/CPN.toking/rl-cpn).
-The exact revision is recorded in `metadata/metadata.yml`.
-
 ## Citations
 
 Andrea Panceri, Gabriele Proietti Mattia and Roberto Beraldi (2024).
@@ -35,15 +32,14 @@ Module names below are relative to `code/`, following the author's conventions:
 
 - `run_*.py`: run simulations and experiments.
 - `node.py`, `cloud.py`, `job.py`, `models.py`: simulation models.
-- `simulation_log.py`: logging utilities (renamed from upstream `log.py` in CNB).
+- `simulation_log.py`: logging utilities.
 - `service_*.py`: simulation services.
 - `traffic/`: fixed simulation inputs.
 - `dynamic_alpha.py`: reactive reward-weight controllers.
 - `scenarios.py`: `throughput_shock`, `energy_scarcity`, `faulted_recovery`, `cascading`.
 - `evaluate_gamma7.py`: seven metrics and scenario scoring.
 - `statistics_export.py`: CSV/JSON statistics export.
-- `run_experiments.py`: unified experiment entry point.
+- `实验/`: four experiment-specific reproduction entry points.
 
 Setup and commands are in [REPRODUCING.md](REPRODUCING.md).
-Historical statistics, analysis scripts and `plot_*.py` scripts remain on the
-CNB `data/experiments` branch. Raw simulation databases are stored outside Git.
+Raw simulation databases are stored outside Git.
