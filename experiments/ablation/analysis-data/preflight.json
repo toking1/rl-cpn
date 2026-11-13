@@ -1,0 +1,7 @@
+{
+  "status": "ok",
+  "all_10_smoke_passed": true,
+  "native_short_identical": true,
+  "native_full_disturbed_scene_identical": true,
+  "formal_run_completed": 1
+}

@@ -1,0 +1,5 @@
+scenario,strategy,n_seeds,mean_score,std_score
+cascading,debo,2,75.21772628589159,0.04752209646765481
+energy_scarcity,debo,2,64.01102703450803,0.0109323818739758
+faulted_recovery,debo,2,70.0,0.0
+throughput_shock,debo,2,56.00000000000001,0.0

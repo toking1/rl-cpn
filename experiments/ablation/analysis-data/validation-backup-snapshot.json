@@ -1,0 +1,5 @@
+{
+  "status": "ok",
+  "mutable_file_atomic_refresh_preserves_download_version": true,
+  "sha256_matches_pinned_file": true
+}

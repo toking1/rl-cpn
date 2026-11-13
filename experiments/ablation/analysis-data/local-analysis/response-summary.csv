@@ -1,0 +1,11 @@
+﻿scenario,strategy,event_time,phase_end,measure,n,observed,right_censored,median_observed_s,min_observed_s,max_observed_s,first_check_boundary_blocked
+throughput_shock,full,4000,8000,first_check_delay_s,1,1,0,0,0,0,0
+throughput_shock,full,4000,8000,first_requested_update_delay_s,1,1,0,0,0,0,0
+throughput_shock,full,4000,8000,first_alpha_change_delay_s,1,1,0,0,0,0,0
+throughput_shock,full,4000,8000,first_feedback_regime_change_delay_s,1,1,0,20,20,20,0
+throughput_shock,full,4000,8000,alpha_shift_005_delay_s,1,1,0,240,240,240,0
+throughput_shock,full,8000,10000,first_check_delay_s,1,1,0,0,0,0,1
+throughput_shock,full,8000,10000,first_requested_update_delay_s,1,1,0,0,0,0,1
+throughput_shock,full,8000,10000,first_alpha_change_delay_s,1,0,1,,,,1
+throughput_shock,full,8000,10000,first_feedback_regime_change_delay_s,1,0,1,,,,1
+throughput_shock,full,8000,10000,alpha_shift_005_delay_s,1,0,1,,,,1

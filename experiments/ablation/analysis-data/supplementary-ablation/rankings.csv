@@ -1,0 +1,17 @@
+scenario,strategy,n_seeds,mean_score,std_score
+cascading,symmetric_same_range__w3_wired,10,78.79294828705284,3.4266857084266817
+cascading,single_scale_adaptive__w3_wired,10,77.74355537143558,3.528966275903125
+cascading,serial_priority__w3_wired,10,67.78566119552951,6.2676969400557
+cascading,no_reject_gate__w3_wired,10,53.550704586336806,6.174473118530901
+energy_scarcity,serial_priority__w3_wired,10,82.05007854602205,3.1981423444006776
+energy_scarcity,symmetric_same_range__w3_wired,10,81.29607390676475,2.602876417994458
+energy_scarcity,no_reject_gate__w3_wired,10,40.25914030791466,4.145894802314166
+energy_scarcity,single_scale_adaptive__w3_wired,10,36.06853667110715,5.3805858200450905
+faulted_recovery,symmetric_same_range__w3_wired,10,73.01875526924456,9.61100985625102
+faulted_recovery,serial_priority__w3_wired,10,69.7847147506333,10.940709534347858
+faulted_recovery,no_reject_gate__w3_wired,10,38.808604200095616,4.670406254721801
+faulted_recovery,single_scale_adaptive__w3_wired,10,37.76816405917172,5.631769493520158
+throughput_shock,symmetric_same_range__w3_wired,10,50.1267610398925,7.155284064313304
+throughput_shock,serial_priority__w3_wired,10,42.33236463991759,10.011203002718721
+throughput_shock,no_reject_gate__w3_wired,10,42.28403829875871,3.679803830489436
+throughput_shock,single_scale_adaptive__w3_wired,10,38.96008856212246,5.79702567257038

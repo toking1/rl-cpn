@@ -1,0 +1,96 @@
+{
+  "source_sha256": "4ad42913785ef7b6fe81e6ffc804697937a39a3fffa9e4785b7f402808d7b5ee",
+  "rows": 960,
+  "seeds": [
+    20260715,
+    20260716,
+    20260717,
+    20260718,
+    20260719,
+    20260720,
+    20260721,
+    20260722,
+    20260723,
+    20260724
+  ],
+  "plots": {
+    "Figure_6_cascading_strategy_metrics_multiseed": {
+      "verified_plotted_values": 168,
+      "matches_full_CSV": true,
+      "max_difference_from_old_subset": 179.0
+    },
+    "Scheme_3_Alpha_Sweep_vs_Dynamic_Benchmark_multiseed": {
+      "verified_plotted_values": 24,
+      "matches_full_CSV": true,
+      "max_difference_from_old_subset": 4.830954412838906
+    },
+    "weight_sensitivity_multiseed": {
+      "verified_plotted_values": 448,
+      "matches_full_CSV": true,
+      "max_difference_from_old_subset": null
+    }
+  },
+  "figure8_strategy_styles": {
+    "reactive_hybrid": [
+      "#8854ad",
+      "D",
+      "-"
+    ],
+    "reactive_rejection": [
+      "#df518f",
+      "x",
+      ":"
+    ],
+    "fixed_0.10": [
+      "#176ab5",
+      "o",
+      "--"
+    ],
+    "fixed_0.25": [
+      "#008b8b",
+      "v",
+      "-."
+    ],
+    "fixed_0.40": [
+      "#2f8a44",
+      "^",
+      "--"
+    ],
+    "fixed_0.45": [
+      "#287fba",
+      "s",
+      "--"
+    ],
+    "fixed_0.50": [
+      "#9a5b2d",
+      "P",
+      "-."
+    ],
+    "fixed_0.55": [
+      "#bd9021",
+      "X",
+      ":"
+    ],
+    "fixed_0.60": [
+      "#596a82",
+      ">",
+      "--"
+    ],
+    "fixed_0.95": [
+      "#d56a14",
+      "<",
+      "-."
+    ]
+  },
+  "figure6_dynamic_marker_positions": {
+    "reactive_rejection": [
+      0.9
+    ],
+    "reactive_battery": [
+      0.98
+    ],
+    "reactive_hybrid": [
+      0.98
+    ]
+  }
+}

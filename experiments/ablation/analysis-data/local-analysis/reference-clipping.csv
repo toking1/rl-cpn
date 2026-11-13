@@ -1,0 +1,8 @@
+﻿scenario,strategy,metric,n,below_frozen_low,above_frozen_high,frozen_low,frozen_high
+throughput_shock,full,gamma,1,0,0,0.014694677871148459,0.035742296918767506
+throughput_shock,full,total_throughput,1,0,0,784756.0,812787.0
+throughput_shock,full,rejection_rate,1,0,0,0.11018688477191384,0.1403259889598873
+throughput_shock,full,avg_latency,1,0,0,0.07103598213756415,0.0765729300400522
+throughput_shock,full,min_lifespan,1,0,0,6349.0,7520.0
+throughput_shock,full,total_service_time,1,0,0,20980.0,23161.0
+throughput_shock,full,battery_variance,1,0,0,0.06900728592091258,0.6504871996088256

@@ -1,0 +1,4 @@
+﻿scenario,strategy,start,end,n,gamma_mean,gamma_sd,rejection_rate_mean,rejection_rate_sd,throughput_per_second_mean,throughput_per_second_sd,avg_latency_mean,avg_latency_sd,alpha_time_mean_mean,alpha_time_mean_sd,min_battery_fraction_mean_mean,min_battery_fraction_mean_sd,checks_mean,checks_sd,alpha_changes_mean,alpha_changes_sd
+throughput_shock,full,3500,4000,1,0.11761904761904762,,0.035757376329933095,,105.482,,0.05232256995909359,,0.413,,0.5035328377974015,,16,,16,
+throughput_shock,full,4000,8000,1,0.016606349206349208,,0.16339988665795524,,133.9665,,0.081210199326236,,0.4520125000000012,,0.1868265405642487,,342,,147,
+throughput_shock,full,8000,10000,1,0.0,,0.02469299792507363,,106.465,,0.05529726362770469,,0.0,,0.0,,200,,0,

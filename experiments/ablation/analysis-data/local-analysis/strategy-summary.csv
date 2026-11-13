@@ -1,0 +1,2 @@
+﻿scenario,strategy,n,mean_score,sd_score,gamma_mean,gamma_sd,total_throughput_mean,total_throughput_sd,rejection_rate_mean,rejection_rate_sd,avg_latency_mean,avg_latency_sd,min_lifespan_mean,min_lifespan_sd,total_service_time_mean,total_service_time_sd,battery_variance_mean,battery_variance_sd,checks_mean,changes_mean,controller_seconds_mean,observer_seconds_mean
+throughput_shock,full,1,45.55326366184488,,0.018640896358543418,,801551.0,,0.12260908400305617,,0.07242554484527064,,7160.0,,22428.0,,0.18012546625975678,,627,198,11.81328164448496,13.16569560271455

@@ -1,0 +1,5 @@
+scenario,strategy,n_seeds,mean_score,std_score
+cascading,greedy_place,5,57.14285714285713,7.944109290391274e-15
+energy_scarcity,greedy_place,5,43.89573459715639,0.0222294585773626
+faulted_recovery,greedy_place,5,80.26513994570072,0.0526833982345981
+throughput_shock,greedy_place,5,97.13595217762597,0.005741327519717014
