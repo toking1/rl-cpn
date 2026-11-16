@@ -1,0 +1,5 @@
+scenario,strategy,n_seeds,mean_score,std_score
+cascading,dqn_alpha,5,61.586849357336135,5.474187662939836
+energy_scarcity,dqn_alpha,5,64.71528803563345,9.616176440002594
+faulted_recovery,dqn_alpha,5,57.48624097928939,9.284739932028073
+throughput_shock,dqn_alpha,5,48.092509915337345,15.339764395521742

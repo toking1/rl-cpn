@@ -1,0 +1,5 @@
+scenario,strategy,n_seeds,mean_score,std_score
+cascading,ucb_mab,2,76.80169369527047,1.909455101872752
+energy_scarcity,ucb_mab,2,64.17039634422545,0.5523233206977347
+faulted_recovery,ucb_mab,2,51.55951646117734,0.20367724007354168
+throughput_shock,ucb_mab,2,46.02395920858925,1.5803350533199139

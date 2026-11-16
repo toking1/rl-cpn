@@ -1,0 +1,5 @@
+scenario,strategy,n_seeds,mean_score,std_score
+cascading,lydroo,2,54.93251302533578,0.0317861920108485
+energy_scarcity,lydroo,2,35.10957445528592,0.015696091188197134
+faulted_recovery,lydroo,2,75.00000000000001,0.0
+throughput_shock,lydroo,2,67.9995414947272,0.0713266812751238

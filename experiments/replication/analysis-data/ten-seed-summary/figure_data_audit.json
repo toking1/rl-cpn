@@ -1,0 +1,126 @@
+{
+  "source_sha256": "4ad42913785ef7b6fe81e6ffc804697937a39a3fffa9e4785b7f402808d7b5ee",
+  "rows": 960,
+  "seeds": [
+    20260715,
+    20260716,
+    20260717,
+    20260718,
+    20260719,
+    20260720,
+    20260721,
+    20260722,
+    20260723,
+    20260724
+  ],
+  "plots": {
+    "Figure_2_single_scenarios_combined_metrics_multiseed": {
+      "verified_plotted_values": 504,
+      "matches_full_CSV": true,
+      "max_difference_from_old_subset": 240.89999999999782
+    },
+    "Figure_3_single_scenarios_strategy_rankings_multiseed": {
+      "verified_plotted_values": 72,
+      "matches_full_CSV": true,
+      "max_difference_from_old_subset": 7.40622594815035
+    },
+    "Figure_6_cascading_strategy_metrics_multiseed": {
+      "verified_plotted_values": 168,
+      "matches_full_CSV": true,
+      "max_difference_from_old_subset": 179.0
+    },
+    "Scheme_3_Alpha_Sweep_vs_Dynamic_Benchmark_multiseed": {
+      "verified_plotted_values": 24,
+      "matches_full_CSV": true,
+      "max_difference_from_old_subset": 4.830954412838906
+    },
+    "weight_sensitivity_multiseed": {
+      "verified_plotted_values": 448,
+      "matches_full_CSV": true,
+      "max_difference_from_old_subset": null
+    }
+  },
+  "statistics": {
+    "ci": "paired t 95%, unadjusted",
+    "holm_families": [
+      4,
+      8
+    ]
+  },
+  "files": {
+    "Figure_2_single_scenarios_combined_metrics_multiseed_10seeds.pdf": "498e046b3c0b4934aa0ad55aa2eba987586b51ac7bc213fa29bf6db7aa51d12b",
+    "Figure_3_single_scenarios_strategy_rankings_multiseed_10seeds.pdf": "14ae58d5aeb56d2df7c8e233ed0823a293a4da9cd242e21e2594fd7ff59408fa",
+    "Figure_6_cascading_strategy_metrics_multiseed_10seeds.pdf": "57deb5428b6111f6f99a3d4b60de2251b21f3c96555f672ba0ff816854b7a1ed",
+    "Scheme_3_Alpha_Sweep_vs_Dynamic_Benchmark_multiseed_10seeds.pdf": "5ceba16cafd3ef77c0373fa28582e7774987d91271b1423bebf480d916f1e19d",
+    "weight_sensitivity_multiseed_10seeds.pdf": "f298dc969315f3e0badeebb8c8a357fb7ecb577b29b04955d79ea918f56577cc",
+    "PBARWS_paired_comparisons_en.pdf": "cffd12bdd59d078a16232956a29959dc21b430006b7e705e8fdcbb36f4893dd9"
+  },
+  "figure8_strategy_styles": {
+    "reactive_hybrid": [
+      "#8854ad",
+      "D",
+      "-"
+    ],
+    "reactive_rejection": [
+      "#df518f",
+      "x",
+      ":"
+    ],
+    "fixed_0.10": [
+      "#176ab5",
+      "o",
+      "--"
+    ],
+    "fixed_0.25": [
+      "#008b8b",
+      "v",
+      "-."
+    ],
+    "fixed_0.40": [
+      "#2f8a44",
+      "^",
+      "--"
+    ],
+    "fixed_0.45": [
+      "#287fba",
+      "s",
+      "--"
+    ],
+    "fixed_0.50": [
+      "#9a5b2d",
+      "P",
+      "-."
+    ],
+    "fixed_0.55": [
+      "#bd9021",
+      "X",
+      ":"
+    ],
+    "fixed_0.60": [
+      "#596a82",
+      ">",
+      "--"
+    ],
+    "fixed_0.95": [
+      "#d56a14",
+      "<",
+      "-."
+    ]
+  },
+  "figure6_dynamic_markers": {
+    "reactive_rejection": "x",
+    "reactive_battery": "^",
+    "reactive_hybrid": "D"
+  },
+  "figure6_dynamic_marker_positions": {
+    "reactive_rejection": [
+      0.9
+    ],
+    "reactive_battery": [
+      0.98
+    ],
+    "reactive_hybrid": [
+      0.98
+    ]
+  }
+}

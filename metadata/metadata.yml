@@ -1,0 +1,28 @@
+metadata_version: 1
+name: "rl-cpn: RL Edge-Cloud Simulator Research Extension"
+description: >-
+  rl-cpn is a research extension of the RL Edge-Cloud Simulator, built on the
+  simulation foundation of Pancio-code/Simulator for reinforcement-learning-based
+  edge-cloud task scheduling and energy management. It adds dynamic-alpha
+  research, scenario contracts, experiment organization, Gamma-7 evaluation,
+  runtime configuration, and standard statistics export. Reproducibility is
+  supported by the simulation code and standard statistics export. Raw simulation
+  data are kept outside the repository.
+tags:
+  - reinforcement learning
+  - edge-cloud
+  - task scheduling
+  - energy management
+  - simulation
+  - reproducibility
+authors:
+  - name: "TANG QINGBO"
+    affiliations:
+      - name: "Hubei University of Technology"
+corresponding_contributor:
+  name: "TANG QINGBO"
+  email: "102511233@hbut.edu.com"
+  affiliations:
+    - name: "Hubei University of Technology"
+
+upstream_repository: https://github.com/Pancio-code/Simulator

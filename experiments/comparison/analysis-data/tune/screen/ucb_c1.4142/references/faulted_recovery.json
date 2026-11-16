@@ -1,0 +1,23 @@
+{
+  "score_version": "Gamma-7",
+  "source": "fixed_alpha_baseline",
+  "dataset": "rerun-20261014",
+  "low": {
+    "gamma": 0.022273992673992674,
+    "total_throughput": 631171.0,
+    "rejection_rate": 0.06358837192933062,
+    "avg_latency": 0.0626270624333828,
+    "min_lifespan": 7287.0,
+    "total_service_time": 23637.0,
+    "battery_variance": 0.04584017494913034
+  },
+  "high": {
+    "gamma": 0.058586080586080586,
+    "total_throughput": 665180.0,
+    "rejection_rate": 0.11157483130125359,
+    "avg_latency": 0.07023494569025872,
+    "min_lifespan": 8775.0,
+    "total_service_time": 26346.0,
+    "battery_variance": 0.6120885580907135
+  }
+}

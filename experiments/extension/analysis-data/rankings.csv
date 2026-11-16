@@ -1,0 +1,7 @@
+scenario,strategy,n_seeds,mean_score,std_score
+cascading,proportional__w3_wireless,3,83.52885955489296,1.2458143369785175
+cascading,full__w3_wireless,3,80.9979951865773,0.8760133361882874
+cascading,fixed_selected__w3_wireless,3,69.45185968236245,3.2474048034997907
+throughput_shock,full__w3_wireless,3,53.11376574219594,10.281954238661905
+throughput_shock,fixed_selected__w3_wireless,3,38.180534789401015,18.04537258699769
+throughput_shock,proportional__w3_wireless,3,35.44889480839774,5.429485004544888

@@ -1,0 +1,5 @@
+scenario,strategy,n_seeds,mean_score,std_score
+cascading,all_local,5,12.80946373050367,0.002633058469906478
+energy_scarcity,all_local,5,17.44327150461879,0.011313171459352485
+faulted_recovery,all_local,5,3.302104178847646,0.0031405944992237643
+throughput_shock,all_local,5,0.5405894527597279,0.0008562380132234725
